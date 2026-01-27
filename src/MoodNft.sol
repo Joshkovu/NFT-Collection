@@ -4,6 +4,12 @@ pragma solidity ^0.8.19;
 import {ERC721} from "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import {Base64} from "@openzeppelin/contracts/utils/Base64.sol";
 
+/**
+ * @title This is a  mood NFT contract
+ * @author Kuteesa Joash
+ * @notice This contract ensures the Nft changes depending on the person's mood
+ */
+
 contract MoodNft is ERC721 {
     uint256 private sTokenCounter;
     string private sSadSvgImageUri;

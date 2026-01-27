@@ -7,7 +7,7 @@ fs_permissions = [
     { access = "read", path = "./broadcast" },
     { access = "read", path = "./script" },
     { access = "read", path = "./src" },
-    { access = "read", path = "./images/" },
+    { access = "read", path = "./img/" },
 ]
 
 

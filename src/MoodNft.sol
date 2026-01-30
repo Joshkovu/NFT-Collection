@@ -24,10 +24,7 @@ contract MoodNft is ERC721 {
     }
     mapping(uint256 => Mood) private sTokenIdMood;
 
-    constructor(
-        string memory sadSvgImageUri,
-        string memory happySvgImageUri
-    ) ERC721("Mood NFT", "MN") {
+    constructor(string memory sadSvgImageUri, string memory happySvgImageUri) ERC721("Mood NFT", "MN") {
         sTokenCounter = 0;
         sSadSvgImageUri = sadSvgImageUri;
         sHappySvgImageUri = happySvgImageUri;
@@ -57,31 +54,28 @@ contract MoodNft is ERC721 {
         return "data:image/svg+xml;base64,";
     }
 
-    function tokenURI(
-        uint256 tokenId
-    ) public view override returns (string memory) {
+    function tokenURI(uint256 tokenId) public view override returns (string memory) {
         string memory imageURI;
         if (sTokenIdMood[tokenId] == Mood.HAPPY) {
             imageURI = sHappySvgImageUri;
         } else {
             imageURI = sSadSvgImageUri;
         }
-        return
-            string(
-                abi.encodePacked(
-                    _baseURI(),
-                    Base64.encode(
-                        bytes(
-                            abi.encodePacked(
-                                '{"name":"',
-                                name(),
-                                '", "description":"An NFT that reflects the owners mood.", "attributes":[{"trait_type":"mood","value":"100"}],"image":"',
-                                imageURI,
-                                '"}'
-                            )
+        return string(
+            abi.encodePacked(
+                _baseURI(),
+                Base64.encode(
+                    bytes(
+                        abi.encodePacked(
+                            '{"name":"',
+                            name(),
+                            '", "description":"An NFT that reflects the owners mood.", "attributes":[{"trait_type":"mood","value":"100"}],"image":"',
+                            imageURI,
+                            '"}'
                         )
                     )
                 )
-            );
+            )
+        );
     }
 }

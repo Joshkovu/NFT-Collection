@@ -45,8 +45,8 @@ Ensure you have the following installed:
 ## Setup & Installation
 ```
 # Clone the repository
-git clone https://github.com/your-username/nft-collection.git
-cd nft-collection
+git clone https://github.com/Joshkovu/NFT-Collection.git
+cd NFT-Collection
 
 # Install dependencies
 forge install

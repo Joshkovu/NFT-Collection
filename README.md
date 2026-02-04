@@ -1,70 +1,175 @@
-## Foundry
+## 🐶 NFT-Collection
+# 📖 Description
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+NFT Collection is a creative NFT project that allows users to mint a Puppy Dog NFT into a wallet of their choice and also mint another NFT which dynamically changes the NFT’s appearance based on mood.
 
-Foundry consists of:
+After minting, the NFT can display either:
 
-- **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
-- **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
-- **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
-- **Chisel**: Fast, utilitarian, and verbose solidity REPL.
+a Happy face, or
 
-## Documentation
+a Sad face,
 
-https://book.getfoundry.sh/
+depending on the user’s selected mood.
 
-## Usage
+This project was built as a hands-on exploration of ERC721 NFTs, metadata handling, testing, and secure deployment practices. It was both a technical learning experience and a genuinely fun project to build.
 
-### Build
+# 📑 Table of Contents
 
-```shell
-$ forge build
+- Getting Started
+
+- Project Structure
+
+- What I Learned
+
+- Future Improvements
+
+## 🚀 Getting Started
+# Prerequisites
+
+Ensure you have the following installed:
+
+- Git
+
+- Foundry
+
+- Node.js (optional)
+
+- MetaMask wallet
+
+- Alchemy account
+
+- Etherscan account
+- 
+- IPFS desktop application
+  
+## Setup & Installation
+```
+# Clone the repository
+git clone https://github.com/your-username/nft-collection.git
+cd nft-collection
+
+# Install dependencies
+forge install
+
+# Compile contracts
+forge build
+
+# Run tests
+forge test -vvv
+```
+Wallet & Environment Setup
+# Securely import your private key (DO NOT expose it)
+```
+cast wallet import <wallet-name> --interactive
 ```
 
-### Test
+# ⚠️ Security Note
+- You should never ever expose your private key in code, commits, or environment files.
+- Always use interactive wallet imports or environment variables for sensitive data.
 
-```shell
-$ forge test
+# 🗂 Project Structure
+
+Sample structure — adjust to match your repository.
+
 ```
-
-### Format
-
-```shell
-$ forge fmt
+├── src/
+│   ├── MoodNft.sol            # ERC721 NFT contract of the different moods
+|   ├── BasicNft.sol           # Dog NFT contract
+│   
+│
+├── script/
+│   ├── DeployMoodScript.s.sol    # Deployment mood script
+|   ├── DeployScript.s.sol        #Deploy basic NFT contract
+│   └── Interactions.s.sol      # Use of devops tools
+│
+├── test/
+│   ├── unit/
+│   │   └── DeployMoodNftTest.t.sol  # Unit tests
+|   |   ├── MoodNftTest.t.sol 
+│   └── integration/
+│       └── BasicNftTest.t.sol
+|       ├── MoodNftIntegration.t.sol 
+│
+├── lib/
+│   └── forge-std
+|   └── foundry-devops/
+|   └── openzeppelin-contracts/
+│
+├── foundry.toml
+└── README.md
 ```
+# 🧠 What I Learned
 
-### Gas Snapshots
+- This project significantly strengthened my understanding of NFT development, testing, and secure deployment workflows.
 
-```shell
-$ forge snapshot
+# 🖼 ERC721 NFTs
+
+- Learned how to use OpenZeppelin’s ERC721 contract
+
+- Successfully minted NFTs directly into a MetaMask wallet
+
+- Implemented dynamic NFT behavior (happy vs sad states)
+
+# 🧱 Project Structure & Code Organization
+
+- Gained clarity on where functions should live
+
+- Learned how to organize contracts, scripts, and tests properly
+
+- Improved overall code readability and maintainability
+
+# 📝 NatSpec Documentation
+
+Learned how to use NatSpec to document:
+
+- Title
+
+- author
+
+- notice
+
+Made the contracts easier to understand for auditors and other developers
+
+# 🔐 Secure Deployment Practices
+
+Learned how to:
+
+- Use an Etherscan API key for contract verification
+
+- Configure a Sepolia RPC URL using Alchemy
+
+- Securely encrypt and manage private keys using
+
+- cast wallet import <name> --interactive
+  
+- To use a Makefile properly
+
+- Understood why exposing private keys is one of the biggest security mistakes in Web3
+
+# 🧪 Testing with Foundry Cheatcodes
+
+Used Foundry cheatcodes to:
+
+- Simulate real-world scenarios
+
+- Write better unit tests
+
+- Create meaningful integration tests
+
+- Developed a deeper appreciation for why testing is critical in smart contract development—especially for immutable code
+
+# 🔮 Future Improvements
+
+- Increase test coverage with more edge-case tests
+
+- Extend the project to mint additional NFT types
+
+- Add support for multiple moods or traits
+
+- Build a simple NFT marketplace for trading the NFTs
+
+## Below are just some URI's i was using in order to store them in ipfs and they helped in the minting process of the NFT's
 ```
-
-### Anvil
-
-```shell
-$ anvil
-```
-
-### Deploy
-
-```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
-```
-
-### Cast
-
-```shell
-$ cast <subcommand>
-```
-
-### Help
-
-```shell
-$ forge --help
-$ anvil --help
-$ cast --help
-```
-
 
 data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MDAiIGhlaWdo
 dD0iNTAwIj4KICAgIDx0ZXh0IHg9IjAiIHk9IjE1IiBmaWxsPSJibGFjayI+WW91IGNvZGVkIHRo
@@ -102,3 +207,4 @@ MS42YTggOCAwIDAgMCA4IDguNGg0OC4xYzQuMiAwIDcuOC0zLjIgOC4xLTcuNCAzLjctNDkuNSA0
 NS4zLTg4LjYgOTUuOC04OC42czkyIDM5LjEgOTUuOCA4OC42Yy4zIDQuMiAzLjkgNy40IDguMSA3
 LjRINjY0YTggOCAwIDAgMCA4LTguNEM2NjcuNiA2MDAuMyA1OTcuNSA1MzMgNTEyIDUzM3ptMTI4
 LTExMmE0OCA0OCAwIDEgMCA5NiAwIDQ4IDQ4IDAgMSAwLTk2IDB6IiAvPgo8L3N2Zz4=
+```
